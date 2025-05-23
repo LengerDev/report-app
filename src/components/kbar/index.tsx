@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import RenderResults from "./render-result";
 import useThemeSwitching from "./use-theme-switching";
+import { NavItem } from "@/types";
 
 export default function KBar({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -22,7 +23,7 @@ export default function KBar({ children }: { children: React.ReactNode }) {
       router.push(url);
     };
 
-    return navItems.flatMap((navItem) => {
+    return navItems.flatMap((navItem: NavItem) => {
       // Only include base action if the navItem has a real URL and is not just a container
       const baseAction =
         navItem.url !== "#"
