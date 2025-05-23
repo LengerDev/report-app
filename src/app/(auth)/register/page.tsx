@@ -13,18 +13,18 @@ import Link from "next/link";
 export default function Page() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
   const router = useRouter();
 
-  const login = (e: FormEvent) => {
+  const register = (e: FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    router.push("/dashboard");
+    router.push("/login");
   };
 
   return (
     <>
       <Head>
-        <title>Login Page</title>
+        <title>Register Page</title>
         <meta
           name="description"
           content="Login page with shadcn/ui and animation"
@@ -61,9 +61,20 @@ export default function Page() {
           {/* Right Side - Form with shadcn/ui */}
           <div className="w-full md:w-1/2 bg-white p-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-              Login
+              Register
             </h2>
             <form className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="username">Username</Label>
+                <Input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  placeholder="Enter your username"
+                />
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -86,14 +97,14 @@ export default function Page() {
                   placeholder="Enter your password"
                 />
               </div>
-              <Button type="button" onClick={login} className="w-full">
-                Login
+              <Button type="button" onClick={register} className="w-full">
+                Register
               </Button>
             </form>
             <p className="mt-4 text-center text-sm text-gray-600">
-              Don’t have an account?{" "}
-              <Link href="/register" className="text-blue-600 hover:underline">
-                Register
+              Already have an account?{" "}
+              <Link href="/login" className="text-blue-600 hover:underline">
+                Login
               </Link>
             </p>
           </div>

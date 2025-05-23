@@ -1,7 +1,11 @@
+import { redirect } from "next/navigation";
+
 export default function Page() {
-  return (
-    <div className="flex justify-center">
-      <h2>Dashboard</h2>
-    </div>
-  );
+  const isLoggedIn: boolean = true;
+
+  if (isLoggedIn) {
+    redirect("/dashboard/overview");
+  }
+
+  redirect("/login");
 }
